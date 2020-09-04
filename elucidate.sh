@@ -6,16 +6,18 @@
 #
 # Distributed under the 0-clause BSD license.
 set -e
+info_path="$HOME/.config/elucidate"
 
 topics() {
-    ls -1 ~/.config/elucidate | sed -e 's/\.md$//'
+    ls -1 "$info_path" | sed -e 's/\.md$//'
 }
 
 usage() {
     local progname="${0#*/}"
     printf 'Usage:\n'
     printf '        %s <topic>\n' "$progname"
-    printf '        %s -h|-t\n' "$progname"
+    printf '        %s -e|-h|-t\n' "$progname"
+    # TODO: document options.
     printf 'Topics:\n'
     # topics_list can't have any spaces in filenames.
     printf '        %s\n' $topics_list
@@ -23,8 +25,8 @@ usage() {
 
 topics_list="$(topics)"
 
-while getopts ht opt; do
-    case "$opt" in
+while getopts hte opt; do
+    case $opt in
     h)
         usage
         exit 0
@@ -32,6 +34,10 @@ while getopts ht opt; do
     t)
         topics
         exit 0
+        ;;
+    e)
+        "$EDITOR" "$info_path"
+        exit $?
         ;;
     *)
         printf 'Use -h for help\n' >&2
