@@ -2,7 +2,7 @@
 # elucidate - a personal documentation tool. I use it to refresh my memory
 # about occasionally used programs like wget and sed.
 #
-# Requires sharkdp's bat and a POSIX-compliant environment.
+# Requires a POSIX-conforming environment.
 #
 # Distributed under the 0-clause BSD license.
 set -e
@@ -52,4 +52,4 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-bat ~/.config/elucidate/"$1".md
+less -F ~/.config/elucidate/"$1".md
