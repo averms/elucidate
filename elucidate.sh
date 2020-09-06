@@ -13,14 +13,14 @@ topics() {
 }
 
 usage() {
-    local progname="${0#*/}"
+    local progname="${0##*/}"
     printf 'Usage:\n'
-    printf '        %s <topic>\n' "$progname"
-    printf '        %s -e|-h|-t\n' "$progname"
+    printf '  %s <topic>\n' "$progname"
+    printf '  %s -e|-h|-t\n' "$progname"
     # TODO: document options.
     printf 'Topics:\n'
-    # topics_list can't have any spaces in filenames.
-    printf '        %s\n' $topics_list
+    # we want topics_list to split on words so we don't use quotes.
+    printf '  %s\n' $topics_list
 }
 
 topics_list="$(topics)"
@@ -52,4 +52,4 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-less -F ~/.config/elucidate/"$1".md
+sed 's/^/  /' ~/.config/elucidate/"$1".md | less -F
