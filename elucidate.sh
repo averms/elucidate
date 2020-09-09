@@ -11,9 +11,9 @@ topics() {
 usage() {
     local progname="${0##*/}"
     printf 'Usage: %s [-eht] <topic>\n\n' "$progname"
-    printf 'Topics: '
+    printf 'Topics:'
     # we want topics_list to split on words so we don't use quotes.
-    printf '%s ' $topics_list | fold -sw 70 | sed '2,$s/^/        /'
+    printf ' %s' $topics_list | fold -sw 70 | sed -e 's/ $//' -e '2,$s/^/        /'
     printf '\n\n'
     printf '  -h  show help\n'
     printf '  -t  print newline-separated list of topics, useful for completion scripts\n'
