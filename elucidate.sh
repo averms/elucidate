@@ -1,9 +1,5 @@
 #!/bin/sh
-# elucidate - a personal documentation tool. I use it to refresh my memory
-# about occasionally used programs like wget and sed.
-#
-# Requires a POSIX-conforming environment.
-#
+# elucidate - a personal documentation tool
 # Distributed under the 0-clause BSD license.
 set -e
 info_path="$HOME/.config/elucidate"
@@ -14,13 +10,14 @@ topics() {
 
 usage() {
     local progname="${0##*/}"
-    printf 'Usage:\n'
-    printf '  %s <topic>\n' "$progname"
-    printf '  %s -e|-h|-t\n' "$progname"
-    # TODO: document options.
-    printf 'Topics:\n'
+    printf 'Usage: %s [-eht] <topic>\n\n' "$progname"
+    printf 'Topics: '
     # we want topics_list to split on words so we don't use quotes.
-    printf '  %s\n' $topics_list
+    printf '%s ' $topics_list | fold -sw 70 | sed '2,$s/^/        /'
+    printf '\n\n'
+    printf '  -h  show help\n'
+    printf '  -t  print newline-separated list of topics, useful for completion scripts\n'
+    printf '  -e  open info_path with editor\n'
 }
 
 topics_list="$(topics)"
