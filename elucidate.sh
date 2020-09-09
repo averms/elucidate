@@ -5,7 +5,7 @@ set -e
 info_path="$HOME/.config/elucidate"
 
 topics() {
-    ls -1 "$info_path" | sed -e 's/\.md$//'
+    ls -1 "$info_path" | sed 's/\.md$//'
 }
 
 usage() {
