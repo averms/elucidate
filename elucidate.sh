@@ -9,7 +9,7 @@ topics() {
 }
 
 usage() {
-    local progname="${0##*/}"
+    progname="${0##*/}"
     printf 'Usage: %s [-eht] <topic>\n\n' "$progname"
     printf 'Topics:'
     # we want topics_list to split on words so we don't use quotes.
