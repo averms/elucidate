@@ -15,9 +15,9 @@ usage() {
     # we want topics_list to split on words so we don't use quotes.
     printf ' %s' $topics_list | fold -sw 70 | sed -e 's/ $//' -e '2,$s/^/        /'
     printf '\n\n'
+    printf '  -e  open info_path with editor\n'
     printf '  -h  show help\n'
     printf '  -t  print newline-separated list of topics, useful for completion scripts\n'
-    printf '  -e  open info_path with editor\n'
 }
 
 topics_list="$(topics)"
@@ -33,7 +33,7 @@ while getopts hte opt; do
         exit 0
         ;;
     e)
-        "$EDITOR" "$info_path"
+        "$VISUAL" "$info_path"
         exit $?
         ;;
     *)
