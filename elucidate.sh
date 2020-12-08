@@ -1,6 +1,6 @@
 #!/bin/sh
-# elucidate - a personal documentation tool
-# Distributed under the 0-clause BSD license.
+# © 2020 Aman Verma <https://aman.raoverma.com/contact.html>
+# Distributed under the 0-clause BSD license, see LICENSE.md file for details.
 set -e
 info_path="$HOME/.config/elucidate"
 
