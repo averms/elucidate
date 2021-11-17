@@ -5,22 +5,20 @@ set -e
 info_path="$HOME/.config/elucidate"
 
 topics() {
-    ls -1 "$info_path" | sed 's/\.md$//'
+    ls -1 "$info_path" | sed 's/[.]md$//'
 }
 
 usage() {
     progname="${0##*/}"
     printf 'Usage: %s [-eht] <topic>\n\n' "$progname"
     printf 'Topics:'
-    # we want topics_list to split on words so we don't use quotes.
-    printf ' %s' $topics_list | fold -sw 70 | sed -e 's/ $//' -e '2,$s/^/        /'
+    # we want topics to split on words so we don't use quotes.
+    printf ' %s' $(topics) | fold -sw 70 | sed -e 's/ $//' -e '2,$s/^/        /'
     printf '\n\n'
-    printf '  -e  open info_path with editor\n'
+    printf '  -e  edit topics with editor\n'
     printf '  -h  show help\n'
     printf '  -t  print newline-separated list of topics, useful for completion scripts\n'
 }
-
-topics_list="$(topics)"
 
 while getopts hte opt; do
     case $opt in
