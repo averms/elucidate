@@ -1,0 +1,53 @@
+.Dd October 22, 2021
+.Dt ELUCIDATE 1
+.Os
+.
+.Sh NAME
+.Nm elucidate
+.Nd a personal documentation tool
+.
+.Sh SYNOPSIS
+.Nm
+.Op Fl eht
+.Ar topic
+.
+.Sh DESCRIPTION
+.Nm
+is a simple documentation tool useful
+for refreshing your memory about programs you use often,
+but not often enough to actually learn.
+The single argument,
+.Ar topic ,
+selects the topic on which documentation is printed.
+.Pp
+Its options are as follows:
+.Bl -tag -width Ds
+.It Fl e
+Open the directory where documentation is stored.
+Uses the editor specified by the environment variable
+.Ev VISUAL .
+.It Fl h
+Print out the help text and exit.
+.It Fl t
+Print out all the defined topics in a format of one per line and exit.
+.El
+.
+.Sh ENVIRONMENT
+.Bl -tag -width VISUAL
+.It Ev VISUAL
+The editor used when
+.Fl e
+is specified.
+.El
+.
+.Sh EXIT STATUS
+.Nm
+exits 0 on success, 1 when unrecognized options are passed,
+and whatever the exit code of the editor was when run with the
+.Fl e
+flag.
+.
+.Sh HISTORY
+The first version of
+.Nm
+was written in September 2020 but grew out of a Lua script created years earlier.
