@@ -48,4 +48,6 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
+echo
 sed 's/^/  /' "$info_path/$1".md
+echo
